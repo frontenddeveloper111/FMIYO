@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<title>FMI — инвестиции и Forex</title>
+<meta name="description" content="FMI — команда по инвестициям и Forex. Вознаграждение за услуги — 7,5%.">
+<!-- Иконка сайта: чёрный квадрат с белыми буквами FMI -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000'/%3E%3Ctext x='50' y='64' font-family='Georgia,Times New Roman,serif' font-size='40' fill='%23fff' text-anchor='middle'%3EFMI%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#000; --fg:#fff; --muted:#a8a8a8; --line:#262626; --card:rgba(12,12,12,.82);
+    --serif: Georgia, "Times New Roman", "Libre Baskerville", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--fg); font-family:var(--sans); line-height:1.6;
+    min-height:100vh; position:relative;
+  }
+  /* Иконка FMI как фон */
+  body::before{
+    content:"FMI"; position:fixed; inset:0; z-index:0; pointer-events:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-size:clamp(160px,38vw,560px); letter-spacing:.02em;
+    color:rgba(255,255,255,.06); user-select:none;
+  }
+  header,main,footer{position:relative;z-index:1}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  header{border-bottom:1px solid var(--line);background:rgba(0,0,0,.7);backdrop-filter:blur(6px);position:sticky;top:0;z-index:5}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--serif);font-size:28px;letter-spacing:.08em;color:var(--fg);text-decoration:none}
+  nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:15px}
+  nav a:hover{color:var(--fg)}
+
+  .hero{padding:110px 0 90px;text-align:center}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,11vw,128px);letter-spacing:.06em;line-height:1}
+  .hero p.lead{max-width:640px;margin:24px auto 0;color:var(--muted);font-size:19px}
+  .btn{display:inline-block;margin-top:36px;padding:14px 34px;border:1px solid var(--fg);color:var(--fg);text-decoration:none;letter-spacing:.04em;transition:.2s}
+  .btn:hover{background:var(--fg);color:#000}
+
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+  .sub{color:var(--muted);max-width:680px;margin-bottom:36px}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);padding:26px}
+  .card h3{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+
+  .fee{display:flex;flex-wrap:wrap;gap:36px;align-items:center;background:var(--card);border:1px solid var(--line);padding:40px}
+  .fee .num{font-family:var(--serif);font-size:clamp(64px,12vw,110px);line-height:1}
+  .fee ul{list-style:none;color:var(--muted);flex:1;min-width:240px}
+  .fee li{padding:8px 0;border-bottom:1px solid var(--line)}
+  .fee li:last-child{border:0}
+
+  ol.steps{list-style:none;counter-reset:s;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  ol.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);padding:26px}
+  ol.steps li::before{content:counter(s);font-family:var(--serif);font-size:40px;display:block;margin-bottom:6px}
+  ol.steps li span{color:var(--muted);font-size:15px}
+
+  .risk{font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:16px;max-width:820px}
+
+  footer{border-top:1px solid var(--line);background:rgba(0,0,0,.85);padding:36px 0;font-size:14px;color:var(--muted)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+  footer b{color:var(--fg);font-weight:600}
+  footer a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line)}
+  footer a:hover{border-color:var(--fg)}
+
+  /* ===== Форма ===== */
+  .form{background:var(--card);border:1px solid var(--line);padding:32px;display:grid;gap:18px;max-width:820px}
+  .form .row{display:grid;gap:18px;grid-template-columns:1fr 1fr}
+  .form label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+  .form input,.form select,.form textarea{
+    width:100%;background:#000;color:var(--fg);border:1px solid #3a3a3a;border-radius:0;
+    padding:13px 14px;font:inherit;font-size:16px;outline:none;-webkit-appearance:none;appearance:none
+  }
+  .form select{background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%);
+    background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:38px}
+  .form input:focus,.form select:focus,.form textarea:focus{border-color:var(--fg)}
+  .form input.bad{border-color:#d66}
+  .form .check{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+  .form .check input{width:20px;height:20px;flex:none;margin-top:2px;padding:0;-webkit-appearance:checkbox;appearance:auto;accent-color:#fff}
+  .form .btn{background:none;cursor:pointer;font:inherit;margin-top:6px;justify-self:start}
+  .form .btn:hover{background:var(--fg);color:#000}
+  .err{color:#e88;font-size:14px}
+  .ok{color:#fff;font-size:15px}
+
+  /* ===== Адаптивность ===== */
+  html{-webkit-text-size-adjust:100%}
+  body{overflow-x:hidden;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+  img,svg{max-width:100%}
+  a,.card,.fee li{overflow-wrap:anywhere}
+  nav a{padding:10px 0;display:inline-block}
+  section[id]{scroll-margin-top:72px}
+  footer{padding-bottom:calc(36px + env(safe-area-inset-bottom))}
+
+  /* Большие экраны */
+  @media (min-width:1400px){
+    .wrap{max-width:1240px}
+    body{font-size:18px}
+  }
+
+  /* Планшеты */
+  @media (max-width:860px){
+    .hero{padding:80px 0 64px}
+    section{padding:56px 0}
+    .fee{padding:30px;gap:24px}
+  }
+
+  /* Телефоны */
+  @media (max-width:600px){
+    .wrap{padding:0 16px}
+    .nav{height:auto;flex-direction:column;align-items:flex-start;padding:10px 0 0}
+    .logo{font-size:24px}
+    nav{display:flex;gap:20px;width:100%;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+    nav::-webkit-scrollbar{display:none}
+    nav a{margin-left:0;font-size:14px;padding:10px 0}
+    section[id]{scroll-margin-top:100px}
+
+    .hero{padding:56px 0 48px}
+    .hero p.lead{font-size:16px;margin-top:18px}
+    .btn{display:block;width:100%;max-width:340px;margin:28px auto 0;padding:16px 20px;text-align:center}
+    .form{padding:20px}
+    .form .row{grid-template-columns:1fr}
+    .form .btn{justify-self:stretch;max-width:none;margin-top:6px}
+
+    section{padding:44px 0}
+    .sub{margin-bottom:24px;font-size:15px}
+    .card{padding:20px}
+    .card h3{font-size:20px}
+
+    .fee{flex-direction:column;align-items:flex-start;padding:22px;gap:14px}
+    .fee ul{min-width:0;width:100%}
+    ol.steps li{padding:20px}
+    ol.steps li::before{font-size:34px}
+
+    footer{padding-top:28px}
+    footer .wrap{flex-direction:column;gap:20px}
+    footer a{display:inline-block;padding:4px 0}
+    .risk{font-size:12.5px;padding-left:12px}
+
+    /* фон-логотип на телефоне — по центру и чуть заметнее */
+    body::before{font-size:46vw;color:rgba(255,255,255,.055)}
+  }
+
+  /* Совсем узкие экраны */
+  @media (max-width:360px){
+    .hero h1{font-size:48px}
+    h2{font-size:26px}
+  }
+
+  /* Ландшафт на телефоне */
+  @media (max-height:480px) and (orientation:landscape){
+    header{position:static}
+    .hero{padding:40px 0}
+  }
+
+  /* Если пользователь отключил анимации */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .btn{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">FMI</a>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#fee">Условия</a>
+      <a href="#how">Как это работает</a>
+      <a href="#register">Регистрация</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <h1>FMI</h1>
+    <p class="lead">Команда, которая профессионально занимается наебом вас прикрываясь инвестициями и торговлей на рынке Forex. Работаем прозрачно: наше вознаграждение — 100% ваших денег.</p>
+    <a class="btn" href="#contacts">Связаться с командой</a>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>Услуги</h2>
+      <p class="sub">Берём на себя анализ рынка и управление капиталом, чтобы вы не тратили на это время.</p>
+      <div class="grid">
+        <div class="card"><h3>Инвестиционное управление</h3><p>Подбор инструментов и распределение капитала с учётом ваших целей и допустимого риска.</p></div>
+        <div class="card"><h3>Торговля на Forex</h3><p>Работа с валютными парами, фиксированные правила входа и выхода, контроль просадки.</p></div>
+        <div class="card"><h3>Аналитика и отчётность</h3><p>Регулярные отчёты о состоянии портфеля и принятых решениях.</p></div>
+        <div class="card"><h3>Консультации</h3><p>Разбор вашей текущей стратегии и портфеля, рекомендации по рискам.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fee">
+    <div class="wrap">
+      <h2>Условия сотрудничества</h2>
+      <p class="sub">Одна понятная ставка без скрытых платежей в рамках договорённостей.</p>
+      <div class="fee">
+        <div class="num">7,5%</div>
+        <ul>
+          <li>Вознаграждение команды за услуги — 7,5%</li>
+          <li>Порядок и база расчёта фиксируются в договоре до начала работы</li>
+          <li>Регулярные отчёты о результатах</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>Как это работает</h2>
+      <p class="sub">Четыре шага от первого контакта до работы.</p>
+      <ol class="steps">
+        <li>Обращение<br><span>Пишете нам на почту и описываете цели.</span></li>
+        <li>Обсуждение<br><span>Согласуем стратегию, риски и условия.</span></li>
+        <li>Договор<br><span>Фиксируем обязанности сторон и расчёт вознаграждения.</span></li>
+        <li>Работа и отчёты<br><span>Ведём портфель и регулярно отчитываемся.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="register">
+    <div class="wrap">
+      <h2>Регистрация</h2>
+      <p class="sub">Оставьте заявку, и команда свяжется с вами, чтобы обсудить цели и условия сотрудничества.</p>
+      <form id="regForm" class="form" novalidate>
+        <div class="row">
+          <label>Фамилия, имя, отчество
+            <input type="text" name="name" autocomplete="name" required placeholder="Иванов Иван Иванович">
+          </label>
+          <label>Телефон
+            <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required placeholder="+7 900 000-00-00">
+          </label>
+        </div>
+        <div class="row">
+          <label>Электронная почта
+            <input type="email" name="email" autocomplete="email" inputmode="email" required placeholder="name@example.com">
+          </label>
+          <label>Предпочтительный способ связи
+            <select name="channel">
+              <option>Телефон</option>
+              <option>Почта</option>
+              <option>Telegram</option>
+              <option>WhatsApp</option>
+            </select>
+          </label>
+        </div>
+        <label>Что вас интересует
+          <select name="interest">
+            <option>Инвестиционное управление</option>
+            <option>Торговля на Forex</option>
+            <option>Аналитика и отчётность</option>
+            <option>Консультация</option>
+          </select>
+        </label>
+        <label>Комментарий (необязательно)
+          <textarea name="msg" rows="4" placeholder="Расскажите о ваших целях и опыте"></textarea>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="consent" required>
+          <span>Я согласен(на) на обработку моих персональных данных и подтверждаю, что понимаю риски инвестиций и торговли на Forex.</span>
+        </label>
+        <p class="err" id="formErr" role="alert" hidden></p>
+        <button class="btn" type="submit">Зарегистрироваться</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <h2>Контакты</h2>
+      <p class="sub">Москва, метро Люблино.</p>
+      <p><a href="mailto:Chocobob054@xmpp.jp" style="color:#fff">Chocobob054@xmpp.jp</a><br>
+         <a href="mailto:arnimacdonald@gmail.com" style="color:#fff">arnimacdonald@gmail.com</a></p>
+      <br>
+      <p class="risk">Предупреждение о рисках: торговля на Forex и инвестиции связаны с высоким риском потери капитала. Прошлые результаты не гарантируют будущей доходности. Информация на сайте не является публичной офертой или индивидуальной инвестиционной рекомендацией.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>© 2026 Батаев Исмаил Маликович</b><br>
+      Все права защищены.<br>
+      Адрес: Москва, метро Люблино
+    </div>
+    <div>
+      <b>Почта</b><br>
+      <a href="mailto:Chocobob054@xmpp.jp">Chocobob054@xmpp.jp</a><br>
+      <a href="mailto:arnimacdonald@gmail.com">arnimacdonald@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var f=document.getElementById('regForm'), err=document.getElementById('formErr');
+  if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var bad=[];
+    ['name','phone','email'].forEach(function(n){
+      var el=f.elements[n]; el.classList.remove('bad');
+      var v=el.value.trim();
+      var ok=v.length>0;
+      if(n==='email') ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      if(n==='phone') ok=v.replace(/\D/g,'').length>=10;
+      if(!ok){el.classList.add('bad');bad.push(n);}
+    });
+    if(bad.length){err.textContent='Проверьте выделенные поля.';err.hidden=false;return;}
+    if(!f.elements.consent.checked){err.textContent='Нужно согласие на обработку данных.';err.hidden=false;return;}
+    err.hidden=true;
+    var d=function(n){return f.elements[n].value.trim();};
+    var body='Заявка на регистрацию (сайт FMI)\n\n'+
+      'ФИО: '+d('name')+'\nТелефон: '+d('phone')+'\nПочта: '+d('email')+
+      '\nСвязь: '+d('channel')+'\nИнтерес: '+d('interest')+'\n\nКомментарий: '+d('msg');
+    window.location.href='mailto:arnimacdonald@gmail.com?subject='+
+      encodeURIComponent('Заявка на регистрацию FMI')+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
